@@ -48,7 +48,7 @@ function styles(done) {
   	.pipe(sass().on('error', sass.logError))
   	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true })) 
   	.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } ))
-  	.pipe(sourcemaps.write('../maps'))
+  	.pipe(sourcemaps.write('/maps'))
   	.pipe(dest('dist/assets/css'))
   	.pipe(browserSync.reload({stream: true})) 
   	done();
@@ -64,7 +64,7 @@ function scripts() {
 	.pipe(sourcemaps.init())
 	.pipe(concat('main.min.js')) 
 	.pipe(uglify()) 
-	.pipe(sourcemaps.write('../maps'))
+	.pipe(sourcemaps.write('/maps'))
 	.pipe(dest('dist/assets/js/')) 
 	.pipe(browserSync.stream()) 
 }
