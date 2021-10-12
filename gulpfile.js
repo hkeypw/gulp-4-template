@@ -33,7 +33,7 @@ function browsersync() {
 	browserSync.init({ 
 		server: {
 			baseDir: 'dist/',
-			index: "index.html"
+			//index: "index.html"
 		}, 
 		notify: false, 
 		online: true 
@@ -77,6 +77,14 @@ function pug2html(){
 	.pipe(dest('dist/'))
 }
 
+// watch
+function Watch(){
+	watch(['src/js/*.js'], scripts);
+	watch(['src/scss/**/*.scss'], styles);
+	watch(['src/pug/**/*.pug'], pug2html);
+	watch('dist/*.html').on('change', browserSync.reload);
+}
+
 // task styles() sacc to css
 exports.styles = styles;
 
@@ -93,4 +101,4 @@ exports.pug2html = pug2html;
 exports.build = parallel(pug2html, styles, scripts);
 
 // default
-exports.default = parallel(pug2html, styles, scripts, browsersync);
+exports.default = parallel(pug2html, styles, scripts, Watch, browsersync);

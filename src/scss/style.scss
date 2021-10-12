@@ -1,9 +1,4 @@
-body{
-	background: #FF0000;
-}
-h1{
-	font-size: 1.6rem;
-}
-h2{
-	font-size: 1.4rem;
-}
+@import "vendor/normalize.css";
+@import "import/_variables";
+@import "import/_grid";
+@import "import/base.scss";
